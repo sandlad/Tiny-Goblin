@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bnmdrs82nxmn5"]
+
+[sub_resource type="SystemFont" id="SystemFont_8m0jb"]
+font_names = PackedStringArray("Kimberley")
+
+[resource]
+font = SubResource("SystemFont_8m0jb")
+font_size = 30
+outline_size = 13
+outline_color = Color(0, 0, 0, 1)

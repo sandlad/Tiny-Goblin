@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7cbwk81bl22"]
+
+[ext_resource type="Texture2D" uid="uid://dg31euebejhwq" path="res://addons/Tiny Swords/Factions/Goblins/Buildings/Wood_Tower/Wood_Tower_Destroyed.png" id="1_8h7ts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e00jl"]
+size = Vector2(19.8092, 11.6875)
+
+[node name="TowerRubble" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(1.18864, 1.18864)
+texture = ExtResource("1_8h7ts")
+region_enabled = true
+region_rect = Rect2(64, 64, 128, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.457196, -8)
+scale = Vector2(4.79144, 4.79144)
+shape = SubResource("RectangleShape2D_e00jl")

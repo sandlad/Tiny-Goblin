@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://b08irtcmajpuk"]
+
+[ext_resource type="Texture2D" uid="uid://2oijpoitxbmc" path="res://addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="1_albee"]
+[ext_resource type="Script" path="res://ui/game_ui.gd" id="1_xu0gm"]
+[ext_resource type="LabelSettings" uid="uid://bnmdrs82nxmn5" path="res://ui/game_ui_meat.tres" id="3_3btm8"]
+[ext_resource type="Texture2D" uid="uid://btfva6h7a48hs" path="res://addons/Tiny Swords/Resources/Resources/M_Idle_(NoShadow).png" id="3_ppnvs"]
+[ext_resource type="Texture2D" uid="uid://foesrakq5wvw" path="res://addons/Tiny Swords/Factions/Knights/Troops/Dead/Dead_(NoShadow).png" id="5_7se16"]
+
+[sub_resource type="SystemFont" id="SystemFont_vp1rv"]
+font_names = PackedStringArray("Kimberley")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebinu"]
+font = SubResource("SystemFont_vp1rv")
+font_size = 25
+outline_size = 13
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cmhy5"]
+texture = ExtResource("1_albee")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iamg1"]
+atlas = ExtResource("3_ppnvs")
+region = Rect2(40, 48, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apb4n"]
+atlas = ExtResource("5_7se16")
+region = Rect2(36, 48, 54, 60)
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_xu0gm")
+
+[node name="TimerLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 18.0
+offset_right = 43.0
+offset_bottom = 66.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "08:50"
+label_settings = SubResource("LabelSettings_ebinu")
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -326.0
+offset_top = 11.0
+offset_right = -18.0
+offset_bottom = 112.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cmhy5")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -44.5
+offset_right = 34.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_iamg1")
+
+[node name="MeatLabel" type="Label" parent="Panel/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "1000"
+label_settings = ExtResource("3_3btm8")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_apb4n")
+stretch_mode = 2
+
+[node name="DeadLabel" type="Label" parent="Panel/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "1000"
+label_settings = ExtResource("3_3btm8")

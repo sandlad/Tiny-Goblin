@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://bf5042ka6m8i0"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_pcfp6"]
+[ext_resource type="PackedScene" uid="uid://bw85lttgjcm7y" path="res://misc/big_skull.tscn" id="2_jqvas"]
+[ext_resource type="Texture2D" uid="uid://dot32a15qmqq5" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="3_8dt68"]
+[ext_resource type="PackedScene" uid="uid://cvdtu87xg56pd" path="res://misc/meat.tscn" id="3_kxrqf"]
+[ext_resource type="PackedScene" uid="uid://b1h7y71u4u1mm" path="res://misc/golden_meat.tscn" id="4_atjgk"]
+[ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="4_bqahx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqmrg"]
+atlas = ExtResource("3_8dt68")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm7e5"]
+atlas = ExtResource("3_8dt68")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhh5n"]
+atlas = ExtResource("3_8dt68")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t37xx"]
+atlas = ExtResource("3_8dt68")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjfmq"]
+atlas = ExtResource("3_8dt68")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uut2m"]
+atlas = ExtResource("3_8dt68")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7o13"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqmrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm7e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhh5n")
+}, {
+"duration": 1.6,
+"texture": SubResource("AtlasTexture_t37xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjfmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uut2m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0sqv"]
+radius = 7.85715
+height = 40.0
+
+[node name="Knight" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(1.4, 1.4)
+script = ExtResource("1_pcfp6")
+health = 20
+death_prefab = ExtResource("2_jqvas")
+drop_chance = 0.3
+drop_items = Array[PackedScene]([ExtResource("3_kxrqf"), ExtResource("4_atjgk")])
+drop_chances = Array[float]([0.8, 0.2])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -31)
+sprite_frames = SubResource("SpriteFrames_v7o13")
+autoplay = "default"
+frame_progress = 0.00657794
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.20641e-12, -8.57143)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_u0sqv")
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("4_bqahx")
+speed = 0.6
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -77.8571)

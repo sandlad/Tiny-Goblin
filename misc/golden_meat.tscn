@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1h7y71u4u1mm"]
+
+[ext_resource type="Script" path="res://misc/life_regenerator.gd" id="1_a3k1e"]
+[ext_resource type="Texture2D" uid="uid://xuh8c1vhfdle" path="res://addons/Tiny Swords/Resources/Resources/M_Spawn.png" id="1_dw1n7"]
+[ext_resource type="Texture2D" uid="uid://bwu4c54xy2edx" path="res://addons/Kenney Particle Pack/circle_03.png" id="3_lbdoe"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fv0cl"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gw2ew"]
+radius = 27.0
+
+[sub_resource type="Animation" id="Animation_14hav"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle03:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j3kid"]
+resource_name = "collected"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(4, 0), Vector2i(3, 0), Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(3.73213, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Circle03:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4),
+"transitions": PackedFloat32Array(3.73, 3.73, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bq48k"]
+resource_name = "spawn"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjrvs"]
+_data = {
+"RESET": SubResource("Animation_14hav"),
+"collected": SubResource("Animation_j3kid"),
+"spawn": SubResource("Animation_bq48k")
+}
+
+[node name="Golden Meat" type="Sprite2D"]
+modulate = Color(3, 1.6, 0, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_dw1n7")
+offset = Vector2(0, -25)
+hframes = 7
+frame = 6
+script = ExtResource("1_a3k1e")
+regeneration_amount = 1000
+
+[node name="Circle03" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_fv0cl")
+position = Vector2(0, -26.6667)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_lbdoe")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, -13)
+scale = Vector2(1.16, 1.16)
+shape = SubResource("CircleShape2D_gw2ew")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xjrvs")
+}
+autoplay = "spawn"

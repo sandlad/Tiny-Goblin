@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcfr8k6qfcagh"]
+
+[ext_resource type="PackedScene" uid="uid://opm5awfgj85q" path="res://player/player.tscn" id="1_cgfln"]
+[ext_resource type="PackedScene" uid="uid://br538fni2074q" path="res://enemies/pawn.tscn" id="2_ttr7y"]
+[ext_resource type="PackedScene" uid="uid://k1koq6x1fb1i" path="res://enemies/sheep.tscn" id="3_gv1nb"]
+[ext_resource type="PackedScene" uid="uid://bf5042ka6m8i0" path="res://enemies/knight.tscn" id="4_ol0yx"]
+
+[node name="TestHealth" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_cgfln")]
+position = Vector2(551, 330)
+
+[node name="Pawn" parent="." instance=ExtResource("2_ttr7y")]
+position = Vector2(173, 269)
+
+[node name="Pawn2" parent="." instance=ExtResource("2_ttr7y")]
+position = Vector2(864, 257)
+
+[node name="Sheep" parent="." instance=ExtResource("3_gv1nb")]
+position = Vector2(376, 501)
+
+[node name="Sheep2" parent="." instance=ExtResource("3_gv1nb")]
+position = Vector2(955, 530)
+
+[node name="Knight" parent="." instance=ExtResource("4_ol0yx")]
+position = Vector2(256, 178)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl0r5invyluru"]
+
+[ext_resource type="PackedScene" uid="uid://cvdtu87xg56pd" path="res://misc/meat.tscn" id="1_5ww6v"]
+
+[node name="Golden Meat" instance=ExtResource("1_5ww6v")]
+modulate = Color(3, 1.6, 0, 1)
+scale = Vector2(1.5, 1.5)
+regeneration_amount = 1000
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+visible = false
