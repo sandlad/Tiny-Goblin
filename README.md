@@ -9,7 +9,7 @@ Explore o mapa para encontrar três carnes de ouro pré-posicionadas, e sobreviv
 ## **> Sobre o Jogo**
 Um primeiro mergulho em programação e no Godot, baseado no desafio do bootcamp **DIO "2024 Santander - Criando Jogos com Godot"**.
 
-Aprendi a desenvolver jogos do zero, passando por fundamentos básicos, informações sobre o mercado, e conceitos de programação na engine Godot.
+Apesar de já ter tido contato com organização de assets em outras engines, aprendi a desenvolver jogos do zero, passando por fundamentos básicos, informações sobre o mercado, e conceitos de programação na engine Godot.
 
 ## **> Como Jogar?**
 Segue link para acesso do jogo na itch.io, jogável em browser.
